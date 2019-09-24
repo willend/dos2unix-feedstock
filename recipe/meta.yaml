@@ -1,5 +1,5 @@
 {% set name = "dos2unix" %}
-{% set version = "7.4.0" %}
+{% set version = "7.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
     url: https://waterlan.home.xs4all.nl/{{name}}/{{name}}-{{ version }}.tar.gz
-    sha256: bac765abdbd95cdd87a71989d4382c32cf3cbfeee2153f0086cb9cf18261048a
+    sha256: 1cd58a60b03ed28fa39046102a185c5e88c4f7665e1e0417c25de7f8b9f78623
 
 build:
   skip: true   # [win]
