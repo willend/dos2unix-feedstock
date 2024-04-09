@@ -13,8 +13,9 @@ build:
   skip: true   # [win]
   number: 0
   script:
-    - make prefix=$PREFIX all
-    - make prefix=$PREFIX install
+    - sed -i.bak s+LDFLAGS_USER\ \ \ \ =+LDFLAGS_USER\ \ \ \ ="\-L\$\{CONDA_PREFIX\}/lib \-I\$\{CONDA_PREFIX\}/include"+g Makefile
+    - make prefix=$CONDA_PREFIX all
+    - make prefix=$CONDA_PREFIX install
 
 requirements:
   build:
