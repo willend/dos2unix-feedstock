@@ -190,6 +190,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
-* [@adbedada](https://github.com/adbedada/)
 * [@oblute](https://github.com/oblute/)
+* [@rluria14](https://github.com/rluria14/)
+* [@willend](https://github.com/willend/)
 
