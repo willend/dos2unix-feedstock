@@ -1,5 +1,5 @@
 {% set name = "dos2unix" %}
-{% set version = "7.4.1" %}
+{% set version = "7.5.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,15 @@ package:
 
 source:
     url: https://waterlan.home.xs4all.nl/{{name}}/{{name}}-{{ version }}.tar.gz
-    sha256: 1cd58a60b03ed28fa39046102a185c5e88c4f7665e1e0417c25de7f8b9f78623
+    sha256: 264742446608442eb48f96c20af6da303cb3a92b364e72cb7e24f88239c4bf3a
 
 build:
   skip: true   # [win]
   number: 0
   script:
-    - make prefix=$PREFIX all
-    - make prefix=$PREFIX install
+    - sed -i.bak s+LDFLAGS_USER\ \ \ \ =+LDFLAGS_USER\ \ \ \ ="\-L\$\{CONDA_PREFIX\}/lib \-I\$\{CONDA_PREFIX\}/include"+g Makefile
+    - make prefix=$CONDA_PREFIX all
+    - make prefix=$CONDA_PREFIX install
 
 requirements:
   build:
@@ -35,6 +36,6 @@ about:
 
 extra:
   recipe-maintainers:
-    - adbeda
     - oblute
     - rluria14
+    - willend
