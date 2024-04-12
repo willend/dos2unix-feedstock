@@ -13,8 +13,13 @@ build:
   skip: true   # [win]
   number: 3
   script:
+    - echo make prefix=$PREFIX LDFLAGS_USER=$LDFLAGS status
     - make prefix=$PREFIX LDFLAGS_USER=$LDFLAGS status
+    - echo _______________________________________________
+    - echo make prefix=$PREFIX LDFLAGS_USER=$LDFLAGS all
     - make prefix=$PREFIX LDFLAGS_USER=$LDFLAGS all
+    - echo _______________________________________________
+    - echo make prefix=$PREFIX LDFLAGS_USER=$LDFLAGS install
     - make prefix=$PREFIX LDFLAGS_USER=$LDFLAGS install
 
 requirements:
