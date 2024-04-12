@@ -11,9 +11,10 @@ source:
 
 build:
   skip: true   # [win]
-  number: 0
+  number: 1
   script:
-    - sed -i.bak s+LDFLAGS_USER\ \ \ \ =+LDFLAGS_USER\ \ \ \ ="\-L\$\{CONDA_PREFIX\}/lib \-I\$\{CONDA_PREFIX\}/include"+g Makefile
+    - sed -i.1.bak s+CFLAGS_USER\ \ \ \ =+CFLAGS_USER\ \ \ \ ="\-L\$\{CONDA_PREFIX\}/lib \-I\$\{CONDA_PREFIX\}/include"+g Makefile
+    - sed -i.2.bak s+LDFLAGS_USER\ \ \ \ =+LDFLAGS_USER\ \ \ \ ="\-L\$\{CONDA_PREFIX\}/lib \-I\$\{CONDA_PREFIX\}/include"+g Makefile
     - make prefix=$CONDA_PREFIX all
     - make prefix=$CONDA_PREFIX install
 
