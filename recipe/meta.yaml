@@ -13,10 +13,9 @@ build:
   skip: true   # [win]
   number: 3
   script:
-    - find $PREFIX -name libintl\* -ls
-    - make prefix=$PREFIX LIBS=-lintl LDFLAGS_USER="-Wl,-rpath,${PREFIX}/lib" CFLAGS_USER="-I$PREFIX/include" status 
-    - make prefix=$PREFIX LIBS=-lintl LDFLAGS_USER="-Wl,-rpath,${PREFIX}/lib" CFLAGS_USER="-I$PREFIX/include" all
-    - make prefix=$PREFIX LIBS=-lintl LDFLAGS_USER="-Wl,-rpath,${PREFIX}/lib" CFLAGS_USER="-I$PREFIX/include" install
+    - make prefix=$PREFIX status
+    - make prefix=$PREFIX all
+    - make prefix=$PREFIX install
 
 requirements:
   build:
