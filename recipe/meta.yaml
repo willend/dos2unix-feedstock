@@ -13,10 +13,10 @@ build:
   skip: true   # [win]
   number: 3
   script:
-    - find $CONDA_PREFIX -name libintl\* -ls
-    - make prefix=$CONDA_PREFIX LIBS=-lintl LDFLAGS_USER="-L$CONDA_PREFIX/lib" CFLAGS_USER="-I$CONDA_PREFIX/include" status 
-    - make prefix=$CONDA_PREFIX LIBS=-lintl LDFLAGS_USER="-L$CONDA_PREFIX/lib" CFLAGS_USER="-I$CONDA_PREFIX/include" all
-    - make prefix=$CONDA_PREFIX LIBS=-lintl LDFLAGS_USER="-L$CONDA_PREFIX/lib" CFLAGS_USER="-I$CONDA_PREFIX/include" install
+    - find $PREFIX -name libintl\* -ls
+    - make prefix=$PREFIX LIBS=-lintl LDFLAGS_USER="-Wl,-rpath,${PREFIX}/lib" CFLAGS_USER="-I$PREFIX/include" status 
+    - make prefix=$PREFIX LIBS=-lintl LDFLAGS_USER="-Wl,-rpath,${PREFIX}/lib" CFLAGS_USER="-I$PREFIX/include" all
+    - make prefix=$PREFIX LIBS=-lintl LDFLAGS_USER="-Wl,-rpath,${PREFIX}/lib" CFLAGS_USER="-I$PREFIX/include" install
 
 requirements:
   build:
