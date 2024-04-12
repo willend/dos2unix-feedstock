@@ -13,9 +13,9 @@ build:
   skip: true   # [win]
   number: 3
   script:
-    - make prefix=$PREFIX CFLAGS_USER="-I$PREFIX/include $CFLAGS" LDFLAGS_USER="$LDFLAGS" status
-    - make prefix=$PREFIX CFLAGS_USER="-I$PREFIX/include $CFLAGS" LDFLAGS_USER="$LDFLAGS" all
-    - make prefix=$PREFIX CFLAGS_USER="-I$PREFIX/include $CFLAGS" LDFLAGS_USER="$LDFLAGS" install
+    - make prefix=$PREFIX CFLAGS_USER="-I$PREFIX/include $CFLAGS" LDFLAGS_USER="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include status
+    - make prefix=$PREFIX CFLAGS_USER="-I$PREFIX/include $CFLAGS" LDFLAGS_USER="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include all
+    - make prefix=$PREFIX CFLAGS_USER="-I$PREFIX/include $CFLAGS" LDFLAGS_USER="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include install
 
 requirements:
   build:
