@@ -11,7 +11,7 @@ source:
 
 build:
   skip: true   # [win]
-  number: 1
+  number: 2
   script:
     - sed -i.1.bak s+CFLAGS_USER\ \ \ \ =+CFLAGS_USER\ \ \ \ ="\-L\$\{CONDA_PREFIX\}/lib \-I\$\{CONDA_PREFIX\}/include"+g Makefile
     - sed -i.2.bak s+LDFLAGS_USER\ \ \ \ =+LDFLAGS_USER\ \ \ \ ="\-L\$\{CONDA_PREFIX\}/lib \-I\$\{CONDA_PREFIX\}/include"+g Makefile
