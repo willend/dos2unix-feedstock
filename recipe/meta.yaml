@@ -13,9 +13,9 @@ build:
   skip: true   # [win]
   number: 3
   script:
-    - sed -i.bak s+/usr/local+\$\(prefix\)+ Makefile
-    - make prefix=$CONDA_PREFIX all
-    - make prefix=$CONDA_PREFIX install
+    - make prefix=$CONDA_PREFIX LDFLAGS_USER="-Wl,-rpath,$CONDA_PREFIX/lib -lintl -L$CONDA_PREFIX/lib" CFLAGS_USER="-I$CONDA_PREFIX/include" status 
+    - make prefix=$CONDA_PREFIX LDFLAGS_USER="-Wl,-rpath,$CONDA_PREFIX/lib -lintl -L$CONDA_PREFIX/lib" CFLAGS_USER="-I$CONDA_PREFIX/include" all
+    - make prefix=$CONDA_PREFIX LDFLAGS_USER="-Wl,-rpath,$CONDA_PREFIX/lib -lintl -L$CONDA_PREFIX/lib" CFLAGS_USER="-I$CONDA_PREFIX/include" install
 
 requirements:
   build:
