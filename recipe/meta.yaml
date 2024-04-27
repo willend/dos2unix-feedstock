@@ -24,7 +24,7 @@ requirements:
     - gettext-tools
   host:
     - gettext
-    - libintl-devel
+    - libintl
 test:
   commands:
     - dos2unix -h
