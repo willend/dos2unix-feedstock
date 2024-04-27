@@ -21,8 +21,10 @@ requirements:
   build:
     - {{ compiler ('c') }}
     - make
+    - gettext-tools
   host:
     - gettext
+    - libintl-devel
 test:
   commands:
     - dos2unix -h

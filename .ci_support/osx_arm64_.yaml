@@ -13,6 +13,5 @@ macos_machine:
 target_platform:
 - osx-arm64
 
-CONDA_BUILD_SYSROOT:
-- /Users/peterwillendrup/Projects/dos2unix-feedstock/SDKs/MacOSX11.0.sdk
+
 
