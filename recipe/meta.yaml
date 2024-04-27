@@ -6,23 +6,25 @@ package:
   version: {{ version }}
 
 source:
-    url: https://waterlan.home.xs4all.nl/{{name}}/{{name}}-{{ version }}.tar.gz
+    url: https://waterlan.home.xs4all.nl/{{ name }}/{{ name }}-{{ version }}.tar.gz
     sha256: 264742446608442eb48f96c20af6da303cb3a92b364e72cb7e24f88239c4bf3a
 
 build:
   skip: true   # [win]
-  number: 2
+  number: 3
   script:
-    - sed -i.1.bak s+CFLAGS_USER\ \ \ \ =+CFLAGS_USER\ \ \ \ ="\-L\$\{CONDA_PREFIX\}/lib \-I\$\{CONDA_PREFIX\}/include"+g Makefile
-    - sed -i.2.bak s+LDFLAGS_USER\ \ \ \ =+LDFLAGS_USER\ \ \ \ ="\-L\$\{CONDA_PREFIX\}/lib \-I\$\{CONDA_PREFIX\}/include"+g Makefile
-    - make prefix=$CONDA_PREFIX all
-    - make prefix=$CONDA_PREFIX install
+    - make prefix=$PREFIX CFLAGS="-I$PREFIX/include $CFLAGS" LDFLAGS="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include status
+    - make prefix=$PREFIX CFLAGS="-I$PREFIX/include $CFLAGS" LDFLAGS="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include all
+    - make prefix=$PREFIX CFLAGS="-I$PREFIX/include $CFLAGS" LDFLAGS="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include install
 
 requirements:
   build:
     - {{ compiler ('c') }}
     - make
+    - gettext-tools
+  host:
     - gettext
+    - libintl-devel  # [osx]
 test:
   commands:
     - dos2unix -h
