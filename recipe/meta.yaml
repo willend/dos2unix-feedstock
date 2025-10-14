@@ -1,17 +1,17 @@
 {% set name = "dos2unix" %}
-{% set version = "7.5.2" %}
+{% set version = "7.5.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-    url: https://waterlan.home.xs4all.nl/{{ name }}/{{ name }}-{{ version }}.tar.gz
-    sha256: 264742446608442eb48f96c20af6da303cb3a92b364e72cb7e24f88239c4bf3a
+  url: https://waterlan.home.xs4all.nl/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 28a4b0d9f9179da4e44c567b9c01f818b070a20827115fffd96f760dcfa0f3b2
 
 build:
-  skip: true   # [win]
-  number: 3
+  skip: true  # [win]
+  number: 0
   script:
     - make prefix=$PREFIX CFLAGS="-I$PREFIX/include $CFLAGS" LDFLAGS="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include status
     - make prefix=$PREFIX CFLAGS="-I$PREFIX/include $CFLAGS" LDFLAGS="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include all
@@ -20,6 +20,7 @@ build:
 requirements:
   build:
     - {{ compiler ('c') }}
+    - {{ stdlib("c") }}
     - make
     - gettext-tools
   host:
