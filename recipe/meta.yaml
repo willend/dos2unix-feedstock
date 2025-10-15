@@ -10,8 +10,7 @@ source:
   sha256: 28a4b0d9f9179da4e44c567b9c01f818b070a20827115fffd96f760dcfa0f3b2
 
 build:
-  skip: true  # [win]
-  number: 0
+  number: 1
   script:
     - make prefix=$PREFIX CFLAGS="-I$PREFIX/include $CFLAGS" LDFLAGS="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include status
     - make prefix=$PREFIX CFLAGS="-I$PREFIX/include $CFLAGS" LDFLAGS="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include all
@@ -19,8 +18,11 @@ build:
 
 requirements:
   build:
-    - {{ compiler ('c') }}
-    - {{ stdlib("c") }}
+    - {{ compiler ('c') }}  # [not win]
+    - {{ stdlib("c") }}  # [not win]
+    - m2-msys2-runtime   # [win]
+    - m2w64-gcc   # [win]
+    - m2-sed   # [win]
     - make
     - gettext-tools
   host:
