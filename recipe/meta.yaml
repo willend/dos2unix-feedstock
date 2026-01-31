@@ -10,12 +10,7 @@ source:
   sha256: f811a2b9e4a0c936c61ef7c1732993d1820e5cf011f4d93861885ccb8101ca21
 
 build:
-  skip: true  # [win]
-  number: 0
-  script:
-    - make prefix=$PREFIX CFLAGS="-I$PREFIX/include $CFLAGS" LDFLAGS="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include status
-    - make prefix=$PREFIX CFLAGS="-I$PREFIX/include $CFLAGS" LDFLAGS="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include all
-    - make prefix=$PREFIX CFLAGS="-I$PREFIX/include $CFLAGS" LDFLAGS="$LDFLAGS" CFLAGS_OS=-I$PREFIX/include install
+  number: 1
 
 requirements:
   build:
@@ -23,6 +18,7 @@ requirements:
     - {{ stdlib("c") }}
     - make
     - gettext-tools
+    - python  # [win]
   host:
     - gettext
     - libintl-devel  # [osx]
