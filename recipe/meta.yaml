@@ -16,8 +16,7 @@ requirements:
   build:
     - {{ compiler ('c') }}
     - {{ stdlib("c") }}
-    - make  # [not win]
-    - nmake  # [win]
+    - make
     - gettext-tools
   host:
     - gettext
